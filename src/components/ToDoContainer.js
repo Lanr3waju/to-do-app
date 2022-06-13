@@ -34,6 +34,10 @@ class ToDoContainer extends React.Component {
     }));
   };
 
+  delTodo = (id) => {
+    console.log('deleted', id)
+  }
+
   render() {
     return (
       <React.Fragment>
