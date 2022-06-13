@@ -45,6 +45,7 @@ class ToDoContainer extends React.Component {
         <ToDoList
           todos={this.state.todos}
           handleChangeProps={this.handleChange}
+          delTodoProps ={this.delTodo}
         />
       </React.Fragment>
     );
