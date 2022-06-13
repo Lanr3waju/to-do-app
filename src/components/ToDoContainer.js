@@ -53,7 +53,7 @@ class ToDoContainer extends React.Component {
       completed: false,
     };
     this.setState({
-      todos: [...this.state.todos, newTodo],
+      todos: [newTodo, ...this.state.todos],
     });
   };
 
