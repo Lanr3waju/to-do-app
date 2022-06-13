@@ -1,6 +1,6 @@
-import React, { component } from "react";
+import React, { Component } from "react";
 
-class InputTodo extends component {
+class InputTodo extends Component {
     render() {
         return (
             <form>
