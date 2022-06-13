@@ -1,15 +1,35 @@
 import React from "react";
 
 class ToDoContainer extends React.Component {
-    render () {
-        return (
-            <>
-                <h1>Hello From Create React App!</h1>
-                <p>I am in a React Component</p>
-            </>
+  state = {
+    todos: [
+      {
+        id: 1,
+        title: "Setup development environment",
+        completed: true,
+      },
+      {
+        id: 2,
+        title: "Develop website and add content",
+        completed: false,
+      },
+      {
+        id: 3,
+        title: "Deploy to live server",
+        completed: false,
+      },
+    ],
+  };
 
-        )
-    }
+  render() {
+    return (
+      <ul>
+        {this.state.todos.map((todo) => (
+          <li>{todo.title}</li>
+        ))}
+      </ul>
+    );
+  }
 }
 
-export default  ToDoContainer;
+export default ToDoContainer;
