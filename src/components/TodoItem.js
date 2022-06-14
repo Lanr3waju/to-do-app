@@ -2,6 +2,15 @@ import React from "react";
 import styles from "./TodoItem.module.css";
 
 class ToDoItem extends React.Component {
+  state = {
+    editing: false,
+  }
+
+  handleEditing =() => {
+    this.setState ({
+      editing: true
+    })
+  }
   render() {
     const completedStyle = {
       fontStyle: "italic",
@@ -9,22 +18,21 @@ class ToDoItem extends React.Component {
       opacity: 0.4,
       textDecoration: "line-through",
     };
-    const { completed, id, title } = this.props.todo
+    const { completed, id, title } = this.props.todo;
     return (
       <li className={styles.item}>
         {" "}
-        <input
-          className={styles.checkbox}
-          type="checkbox"
-          checked={completed}
-          onChange={() => this.props.handleChangeProps(id)}
-        />{" "}
-        <button onClick={() => this.props.deleteTodoProps(id)}>
-          Delete
-        </button>
-        <span style={completed ? completedStyle : null}>
-          {title}
-        </span>
+        <div onDoubleClick={this.handleEditing}>
+          <input
+            className={styles.checkbox}
+            type="checkbox"
+            checked={completed}
+            onChange={() => this.props.handleChangeProps(id)}
+          />{" "}
+          <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
+          <span style={completed ? completedStyle : null}>{title}</span>
+        </div>
+        <input type="text" className={styles.textInput} />
       </li>
     );
   }
