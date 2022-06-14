@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./TodoItem.module.css";
+import { FaTrash } from "react-icons/fa";
 
 class ToDoItem extends React.Component {
   state = {
@@ -12,18 +13,14 @@ class ToDoItem extends React.Component {
     });
   };
 
-  handleUpdatedDone = e => {
-    if (e.key === 'Enter') {
+  handleUpdatedDone = (e) => {
+    if (e.key === "Enter") {
       this.setState({
-        editing: false
-      })
+        editing: false,
+      });
     }
-  }
+  };
 
-  componentWillUnmount() {
-    console.log("Cleaning up...")
-  }
-  
   render() {
     const completedStyle = {
       fontStyle: "italic",
@@ -51,7 +48,9 @@ class ToDoItem extends React.Component {
             checked={completed}
             onChange={() => this.props.handleChangeProps(id)}
           />{" "}
-          <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
+          <button onClick={() => this.props.deleteTodoProps(id)}>
+          <FaTrash style={{ color: "orangered", fontSize: "16px" }} />
+          </button>
           <span style={completed ? completedStyle : null}>{title}</span>
         </div>
         <input
@@ -59,7 +58,7 @@ class ToDoItem extends React.Component {
           className={styles.textInput}
           value={title}
           style={editMode}
-          onKeyDown = {this.handleUpdatedDone}
+          onKeyDown={this.handleUpdatedDone}
           onChange={(e) => {
             this.props.setUpdate(e.target.value, id);
           }}
