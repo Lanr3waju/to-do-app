@@ -8,7 +8,7 @@ class ToDoItem extends React.Component {
 
   handleEditing =() => {
     this.setState ({
-      editing: true
+      editing: true,
     })
   }
   render() {
@@ -18,11 +18,20 @@ class ToDoItem extends React.Component {
       opacity: 0.4,
       textDecoration: "line-through",
     };
+
+    let viewMode = {};
+    let editMode = {};
+
+    if(this.state.editing) {
+      viewMode.display = 'none'
+    } else {
+      editMode.display = 'none'
+    }
     const { completed, id, title } = this.props.todo;
     return (
       <li className={styles.item}>
         {" "}
-        <div onDoubleClick={this.handleEditing}>
+        <div onDoubleClick={this.handleEditing} style={viewMode}>
           <input
             className={styles.checkbox}
             type="checkbox"
@@ -32,7 +41,7 @@ class ToDoItem extends React.Component {
           <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
           <span style={completed ? completedStyle : null}>{title}</span>
         </div>
-        <input type="text" className={styles.textInput} />
+        <input type="text" className={styles.textInput} style={editMode} />
       </li>
     );
   }
