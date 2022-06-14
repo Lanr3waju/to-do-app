@@ -4,13 +4,13 @@ import styles from "./TodoItem.module.css";
 class ToDoItem extends React.Component {
   state = {
     editing: false,
-  }
+  };
 
-  handleEditing =() => {
-    this.setState ({
+  handleEditing = () => {
+    this.setState({
       editing: true,
-    })
-  }
+    });
+  };
   render() {
     const completedStyle = {
       fontStyle: "italic",
@@ -22,10 +22,10 @@ class ToDoItem extends React.Component {
     let viewMode = {};
     let editMode = {};
 
-    if(this.state.editing) {
-      viewMode.display = 'none'
+    if (this.state.editing) {
+      viewMode.display = "none";
     } else {
-      editMode.display = 'none'
+      editMode.display = "none";
     }
     const { completed, id, title } = this.props.todo;
     return (
@@ -41,7 +41,15 @@ class ToDoItem extends React.Component {
           <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
           <span style={completed ? completedStyle : null}>{title}</span>
         </div>
-        <input type="text" className={styles.textInput} style={editMode} />
+        <input
+          type="text"
+          className={styles.textInput}
+          value={title}
+          style={editMode}
+          onChange={(e) => {
+            console.log(e.target.value, id);
+          }}
+        />
       </li>
     );
   }
