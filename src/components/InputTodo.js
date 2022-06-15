@@ -33,7 +33,7 @@ class InputTodo extends Component {
           placeholder="Add Todo....."
           value={this.state.title}
           onChange={this.onChange}
-        />
+        />\
         <button className="input-submit">
           <FaPlusCircle
             style={{ color: "darkcyan", fontSize: "20px", marginTop: "2px" }}
